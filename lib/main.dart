@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:today/provider/weatherprovider.dart';
-import '/screens/homeScreen.dart';
+
+import 'screens/pageview.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,9 +16,7 @@ class MyApp extends StatelessWidget {
       create: (ctx) => WeatherProvider(),
       child: MaterialApp(
         title: 'Flutter Demo',
-        home: Scaffold(
-          body: HomeScreen(),
-        ),
+        home: Scaffold(body: PageViewDemo()),
       ),
     );
   }

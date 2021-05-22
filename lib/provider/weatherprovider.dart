@@ -5,10 +5,10 @@ import '../models/locationModel.dart';
 
 class WeatherProvider extends ChangeNotifier {
   OpenWeatherMapWeatherApi weatherApi = new OpenWeatherMapWeatherApi();
-  Future<ForecaseModel> currentWeather() async {
-    LocationModel loc = await weatherApi.getLocation('London');
-    ForecaseModel fore = await weatherApi.getWeather(loc);
-
+  ForecaseModel fore;
+  Future<ForecaseModel> currentWeather(String city) async {
+    LocationModel loc = await weatherApi.getLocation(city);
+    fore = await weatherApi.getWeather(loc, city);
     return fore;
   }
 }

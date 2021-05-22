@@ -31,6 +31,10 @@ class WeatherModel {
   final double windSpeed;
   final int cloudiness;
   final DateTime date;
+  final int visibility;
+  final double windgust;
+  final double dewpoint;
+  final int winddeg;
 
   WeatherModel({
     @required this.condition,
@@ -43,6 +47,10 @@ class WeatherModel {
     @required this.windSpeed,
     @required this.cloudiness,
     @required this.date,
+    @required this.visibility,
+    @required this.windgust,
+    @required this.dewpoint,
+    @required this.winddeg,
   });
 
   static WeatherModel fromDailyJson(dynamic daily) {
@@ -50,6 +58,10 @@ class WeatherModel {
     var weather = daily['weather'][0];
 
     return WeatherModel(
+      dewpoint: daily['dew_point'].toDouble(),
+      visibility: daily['visibility'],
+      winddeg: daily['wind_deg'],
+      windgust: daily['wind_gust'].toDouble(),
       condition: mapStringToWeatherCondition(weather['main'], cloudiness),
       description: weather['description'],
       temp: daily['temp']['day'].toDouble(),

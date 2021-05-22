@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'weatherModel.dart';
 
 class ForecaseModel {
@@ -10,17 +12,18 @@ class ForecaseModel {
   final String city;
 
   ForecaseModel({
-    this.lastupdated,
-    this.longitude,
-    this.latitude,
+    @required this.lastupdated,
+    @required this.longitude,
+    @required this.latitude,
     this.daily: const [],
-    this.current,
-    this.isDayTime,
-    this.city,
+    @required this.current,
+    @required this.isDayTime,
+    @required this.city,
   });
 
-  static ForecaseModel fromJson(dynamic json) {
+  static ForecaseModel fromJson(dynamic json, String city) {
     try {
+      print(json['timezone']);
       var weather = json['current']['weather'][0];
 
       var date = DateTime.fromMicrosecondsSinceEpoch(
@@ -52,19 +55,25 @@ class ForecaseModel {
       }
 
       var currentForecast = WeatherModel(
-          condition: WeatherModel.mapStringToWeatherCondition(
-              weather['main'], int.parse(json['current']['clouds'].toString())),
-          description: weather['description'],
-          temp: json['current']['temp'],
-          feelLikeTemp: json['current']['feelLikeTemp'],
-          pressure: json['current']['pressure'],
-          humidity: json['current']['humidity'],
-          uvi: json['current']['uvi'],
-          windSpeed: json['current']['wind_speed'],
-          cloudiness: json['current']['clouds'],
-          date: date);
+        condition: WeatherModel.mapStringToWeatherCondition(
+            weather['main'], int.parse(json['current']['clouds'].toString())),
+        description: weather['description'],
+        temp: json['current']['temp'],
+        feelLikeTemp: json['current']['feels_like'],
+        pressure: json['current']['pressure'],
+        humidity: json['current']['humidity'],
+        uvi: json['current']['uvi'].toDouble(),
+        windSpeed: json['current']['wind_speed'],
+        cloudiness: json['current']['clouds'].toInt(),
+        dewpoint: json['current']['dew_point'].toDouble(),
+        visibility: json['current']['visibility'].toInt(),
+        winddeg: json['current']['wind_deg'].toInt(),
+        windgust: json['current']['wind_gust'].toDouble(),
+        date: date,
+      );
 
       return ForecaseModel(
+        city: city,
         lastupdated: DateTime.now(),
         current: currentForecast,
         latitude: json['lat'].toDouble(),

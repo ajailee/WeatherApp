@@ -16,6 +16,8 @@ class OpenWeatherMapWeatherApi extends WeatherApi {
   @override
   Future<LocationModel> getLocation(String city) async {
     final requestUrl = '$endPointUrl/weather?q=$city&APPID=$apiKey';
+
+    print(requestUrl);
     final response = await this.httpclient.get(Uri.parse(requestUrl));
     if (response.statusCode == 200) {
       return LocationModel.fromJson(jsonDecode(response.body));
@@ -26,13 +28,14 @@ class OpenWeatherMapWeatherApi extends WeatherApi {
   }
 
   @override
-  Future<ForecaseModel> getWeather(LocationModel location) async {
+  Future<ForecaseModel> getWeather(LocationModel location, String city) async {
     final requestUrl =
         '$endPointUrl/onecall?lat=${location.latitude}&lon=${location.longitude}&exclude=hourly,minutely&APPID=$apiKey';
+    print(requestUrl);
     final response = await this.httpclient.get(Uri.parse(requestUrl));
 
     if (response.statusCode == 200) {
-      final res = ForecaseModel.fromJson(jsonDecode(response.body));
+      final res = ForecaseModel.fromJson(jsonDecode(response.body), city);
 
       return res;
     } else {
