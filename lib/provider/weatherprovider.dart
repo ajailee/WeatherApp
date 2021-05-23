@@ -11,4 +11,13 @@ class WeatherProvider extends ChangeNotifier {
     fore = await weatherApi.getWeather(loc, city);
     return fore;
   }
+
+  Future<ForecaseModel> getweather(city) async {
+    if (fore != null) {
+      return fore;
+    } else {
+      print('new featch');
+      return await currentWeather(city);
+    }
+  }
 }

@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:today/models/weatherModel.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class TempIcon extends StatelessWidget {
   final WeatherCondition condition;
@@ -47,15 +50,28 @@ class TempIcon extends StatelessWidget {
     }
     print(_image);
     print(condition);
-    return Center(
-      child: Container(
-        height: size.height * .13,
-        width: size.width * .45,
-        child: SvgPicture.asset(
-          _image,
-          fit: BoxFit.cover,
+    if (kIsWeb)
+      return Center(
+        child: Container(
+          height: size.height * .35,
+          width: size.width * .35,
+          child: SvgPicture.asset(
+            _image,
+            fit: BoxFit.fill,
+          ),
         ),
-      ),
-    );
+      );
+    else if (Platform.isAndroid) {
+      return Center(
+        child: Container(
+          height: size.height * .13,
+          width: size.width * .45,
+          child: SvgPicture.asset(
+            _image,
+            fit: BoxFit.cover,
+          ),
+        ),
+      );
+    }
   }
 }

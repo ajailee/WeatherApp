@@ -16,7 +16,7 @@ class CityCard extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              city,
+              '📍$city',
               style: TextStyle(fontSize: 40, color: Colors.white),
             ),
             Padding(padding: EdgeInsets.symmetric(vertical: 8)),

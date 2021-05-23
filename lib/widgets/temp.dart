@@ -10,7 +10,7 @@ class Temp extends StatelessWidget {
     String cel = c.toStringAsFixed(2);
     return Container(
       child: Text(
-        cel + " \u2103",
+        '🌡️' + cel + " \u2103",
         style: TextStyle(fontSize: 45, color: Colors.white),
       ),
     );
