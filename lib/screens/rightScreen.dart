@@ -45,7 +45,7 @@ class _RightScreenState extends State<RightScreen>
                 if (snapshot.connectionState == ConnectionState.waiting ||
                     snapshot.hasError ||
                     !snapshot.hasData) {
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator());
                 } else {
                   return FadeTransition(
                     opacity: _animation,

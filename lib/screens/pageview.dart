@@ -10,7 +10,7 @@ class PageViewDemo extends StatefulWidget {
 
 class _PageViewDemoState extends State<PageViewDemo> {
   PageController _controller = PageController(
-    initialPage: 0,
+    initialPage: 1,
   );
 
   @override
