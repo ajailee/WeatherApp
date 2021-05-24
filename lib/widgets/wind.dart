@@ -8,7 +8,7 @@ class Wind extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.4,
-      height: MediaQuery.of(context).size.height * 0.21,
+      height: MediaQuery.of(context).size.height * 0.25,
       child: Card(
         color: Colors.transparent,
         child: Column(
@@ -16,12 +16,18 @@ class Wind extends StatelessWidget {
             Padding(padding: EdgeInsets.all(10)),
             Text('Wind Speed',
                 style: TextStyle(fontSize: 20, color: Colors.white)),
-            Icon(Icons.air),
+            Icon(
+              Icons.air,
+              color: Colors.white,
+            ),
             Text(
               '$wind',
               style: TextStyle(fontSize: 60, color: Colors.white),
             ),
-            Text('meter/sec'),
+            Text(
+              'meter/sec',
+              style: TextStyle(color: Colors.white),
+            ),
           ],
         ),
       ),

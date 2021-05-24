@@ -14,7 +14,7 @@ class FeelsLike extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            cel + " \u2103",
+            cel + "°C",
             style: TextStyle(fontSize: 18, color: Colors.white),
           ),
           Text(

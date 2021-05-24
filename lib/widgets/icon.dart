@@ -48,8 +48,6 @@ class TempIcon extends StatelessWidget {
     } else {
       _image = 'assets/images/cloudy.svg';
     }
-    print(_image);
-    print(condition);
     if (kIsWeb)
       return Center(
         child: Container(
@@ -62,6 +60,17 @@ class TempIcon extends StatelessWidget {
         ),
       );
     else if (Platform.isAndroid) {
+      return Center(
+        child: Container(
+          height: size.height * .13,
+          width: size.width * .45,
+          child: SvgPicture.asset(
+            _image,
+            fit: BoxFit.cover,
+          ),
+        ),
+      );
+    } else {
       return Center(
         child: Container(
           height: size.height * .13,

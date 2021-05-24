@@ -8,7 +8,7 @@ class Humadity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.4,
-      height: MediaQuery.of(context).size.height * 0.21,
+      height: MediaQuery.of(context).size.height * 0.25,
       child: Card(
         color: Colors.transparent,
         child: Column(
@@ -16,12 +16,18 @@ class Humadity extends StatelessWidget {
             Padding(padding: EdgeInsets.all(10)),
             Text('Humidity',
                 style: TextStyle(fontSize: 20, color: Colors.white)),
-            Icon(Icons.water_outlined),
+            Icon(
+              Icons.water_outlined,
+              color: Colors.white,
+            ),
             Text(
               '$hum',
               style: TextStyle(fontSize: 60, color: Colors.white),
             ),
-            Text('Humidity in %')
+            Text(
+              'Humidity in %',
+              style: TextStyle(color: Colors.white),
+            )
           ],
         ),
       ),

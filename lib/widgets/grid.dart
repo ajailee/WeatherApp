@@ -10,12 +10,12 @@ class MyGrid extends StatefulWidget {
 
   MyGrid(
       {Key key,
-      @required this.uvi: '0',
-      @required this.clouds: '0',
-      @required this.visibility: '0',
-      @required this.windgust: '0',
-      @required this.dewpoint: '0',
-      @required this.timeZone: '0'})
+      this.uvi: '0',
+      this.clouds: '0',
+      this.visibility: '0',
+      this.windgust: '0',
+      this.dewpoint: '0',
+      this.timeZone: '0'})
       : super(key: key);
 
   @override

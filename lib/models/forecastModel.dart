@@ -61,14 +61,16 @@ class ForecaseModel {
         temp: json['current']['temp'],
         feelLikeTemp: json['current']['feels_like'],
         pressure: json['current']['pressure'],
-        humidity: json['current']['humidity'],
-        uvi: json['current']['uvi'].toDouble(),
-        windSpeed: json['current']['wind_speed'],
-        cloudiness: json['current']['clouds'].toInt(),
-        dewpoint: json['current']['dew_point'].toDouble(),
-        visibility: json['current']['visibility'].toInt(),
-        winddeg: json['current']['wind_deg'].toInt(),
-        windgust: json['current']['wind_gust'].toDouble(),
+        humidity: json['current']['humidity'].toInt() ?? 0.0,
+        uvi: json['current']['uvi'].toDouble() ?? 0.0,
+        windSpeed: json['current']['wind_speed'].toDouble() ?? 0.0,
+        cloudiness: json['current']['clouds'].toInt() ?? 0,
+        dewpoint: json['current']['dew_point'].toDouble() ?? 0.0,
+        visibility: json['current']['visibility'].toInt() ?? 0,
+        winddeg: json['current']['wind_deg'].toInt() ?? 0,
+        windgust: json['current']['wind_gust'] != null
+            ? json['current']['wind_gust'].toDouble()
+            : 0.0,
         date: date,
       );
 

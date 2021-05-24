@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:today/models/forecastModel.dart';
 import 'package:today/widgets/FeelsLike.dart';
@@ -23,9 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final weather = Provider.of<WeatherProvider>(context);
+
     return Center(
       child: FutureBuilder(
-          future: weather.currentWeather('Chennai'),
+          future: weather.currentWeather(),
           builder: (context, AsyncSnapshot<ForecaseModel> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -34,15 +33,22 @@ class _HomeScreenState extends State<HomeScreen> {
               return Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    gradient: data.isDayTime
-                        ? LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [Colors.blue[900], Colors.blue[200]])
-                        : LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [Colors.indigo[800], Colors.indigo[600]])),
+                  image: DecorationImage(
+                    image: data.isDayTime
+                        ? AssetImage("assets/images/sunny.jpg")
+                        : AssetImage("assets/images/night.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // gradient: data.isDayTime
+                //     ? LinearGradient(
+                //         begin: Alignment.topLeft,
+                //         end: Alignment.bottomRight,
+                //         colors: [Colors.blue, Colors.blue[200]])
+                //     : LinearGradient(
+                //         begin: Alignment.topLeft,
+                //         end: Alignment.bottomRight,
+                //         colors: [Colors.indigo[800], Colors.indigo[600]])),
                 child: kIsWeb
                     ? Scaffold(
                         backgroundColor: Colors.transparent,

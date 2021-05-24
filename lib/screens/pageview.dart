@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:today/screens/homeScreen.dart';
 import 'package:today/screens/leftScreen.dart';
+import 'package:today/screens/newhome.dart';
 import 'package:today/screens/rightScreen.dart';
 
 class PageViewDemo extends StatefulWidget {
@@ -10,7 +10,7 @@ class PageViewDemo extends StatefulWidget {
 
 class _PageViewDemoState extends State<PageViewDemo> {
   PageController _controller = PageController(
-    initialPage: 1,
+    initialPage: 0,
   );
 
   @override
@@ -25,7 +25,7 @@ class _PageViewDemoState extends State<PageViewDemo> {
       controller: _controller,
       children: [
         LeftScreen(),
-        HomeScreen(),
+        NewHomeScreen(),
         RightScreen(),
       ],
     );
